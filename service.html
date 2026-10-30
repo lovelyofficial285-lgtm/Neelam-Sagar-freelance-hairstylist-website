@@ -358,6 +358,37 @@ footer a.totop svg{ width:12px; height:12px; vertical-align:-1px; margin-left:.3
   .gsap-ready .rv, .gsap-ready .hero-in{ opacity:1; transform:none; }
   html{ scroll-behavior:auto; }
 }
+.wa-float{
+  position:fixed; right:max(18px, env(safe-area-inset-right)); bottom:max(18px, env(safe-area-inset-bottom));
+  z-index:850; display:flex; align-items:center; gap:.7rem;
+  opacity:0; visibility:hidden; transform:translateY(20px);
+  transition:opacity .4s ease, transform .4s ease, visibility .4s ease;
+}
+.wa-float.show{ opacity:1; visibility:visible; transform:none; }
+.wa-ic{
+  position:relative; width:58px; height:58px; border-radius:50%;
+  background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center;
+  box-shadow:0 10px 28px rgba(37,211,102,.45);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.wa-ic svg{ width:30px; height:30px; }
+.wa-ic::before{
+  content:""; position:absolute; inset:0; border-radius:50%; background:#25D366; z-index:-1;
+  animation:waPulse 2.4s ease-out infinite;
+}
+@keyframes waPulse{ 0%{ transform:scale(1); opacity:.55; } 100%{ transform:scale(1.7); opacity:0; } }
+.wa-float:hover .wa-ic{ transform:scale(1.08); box-shadow:0 14px 34px rgba(37,211,102,.6); }
+.wa-float:active .wa-ic{ transform:scale(.95); }
+.wa-tip{
+  background:var(--ink-2, #2B2230); color:var(--ivory, #FBF8FC);
+  font-size:.68rem; letter-spacing:.18em; text-transform:uppercase;
+  padding:.65rem 1rem; border-radius:999px; white-space:nowrap;
+  opacity:0; transform:translateX(10px); pointer-events:none;
+  transition:opacity .3s ease, transform .3s ease;
+}
+.wa-float:hover .wa-tip, .wa-float:focus-visible .wa-tip, .wa-float.hint .wa-tip{ opacity:1; transform:none; }
+@media (max-width:640px){ .wa-tip{ display:none; } }
+@media (prefers-reduced-motion:reduce){ .wa-ic::before{ animation:none; } }
 </style>
 </head>
 
@@ -376,10 +407,10 @@ footer a.totop svg{ width:12px; height:12px; vertical-align:-1px; margin-left:.3
     <nav class="nav-links" aria-label="Primary navigation">
       <a href="/">Home</a>
       <a href="/services" aria-current="page">Services</a>
+      <a href="/gallery.html">Gallery</a>
+      <a href="#contact">Contact</a>
       <a href="/hair-extensions">Hair Extensions</a>
       <a href="/hairstyle-classes">Classes</a>
-      <a href="/portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
       <a href="#contact" class="nav-cta">Book Now</a>
     </nav>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mMenu">
@@ -391,11 +422,11 @@ footer a.totop svg{ width:12px; height:12px; vertical-align:-1px; margin-left:.3
 <div class="m-menu" id="mMenu" aria-hidden="true">
   <ul>
     <li><a class="m-link" href="/">Home</a></li>
-    <li><a class="m-link" href="/services" aria-current="page">Services</a></li>
-    <li><a class="m-link" href="/hair-extensions">Hair Extensions</a></li>
-    <li><a class="m-link" href="/hairstyle-classes">Classes</a></li>
-    <li><a class="m-link" href="/portfolio">Portfolio</a></li>
+    <li><a class="m-link" href="/service.html" aria-current="page">Services</a></li>
+    <li><a class="m-link" href="/gallery.html">Gallery</a></li>
     <li><a class="m-link" href="#contact">Contact</a></li>
+    <li><a class="m-link" href="/hairextensions.html">Hair Extensions</a></li>
+    <li><a class="m-link" href="/hair-extension-classes.html">Classes</a></li>
     <li><a class="m-link m-book" href="#contact">Book Now</a></li>
   </ul>
   <div class="m-extra">
@@ -439,7 +470,7 @@ footer a.totop svg{ width:12px; height:12px; vertical-align:-1px; margin-left:.3
 <section class="svc-block" id="bridal">
   <div class="container svc-grid">
     <div class="svc-media rv">
-      <div class="svc-frame"><img src="photo2.jpg" alt="Bridal hairstylist in Delhi and Mumbai: bridal updo with jewelled hairpiece" loading="lazy"></div>
+      <div class="svc-frame"><img src="/images/bridal makeup service page.jpg" alt="Bridal hairstylist in Delhi and Mumbai: bridal updo with jewelled hairpiece" loading="lazy"></div>
     </div>
     <div class="svc-body">
       <p class="svc-no rv">No. 01</p>
@@ -467,7 +498,7 @@ footer a.totop svg{ width:12px; height:12px; vertical-align:-1px; margin-left:.3
 <section class="svc-block" id="editorial">
   <div class="container svc-grid rev">
     <div class="svc-media rv">
-      <div class="svc-frame"><img src="photo4.jpg" alt="Celebrity and editorial hairstylist: sculpted editorial updo with feathers" loading="lazy"></div>
+      <div class="svc-frame"><img src="/images/celebrity hairstylist.jpg" alt="Celebrity and editorial hairstylist: sculpted editorial updo with feathers" loading="lazy"></div>
     </div>
     <div class="svc-body">
       <p class="svc-no rv">No. 02</p>
@@ -495,7 +526,7 @@ footer a.totop svg{ width:12px; height:12px; vertical-align:-1px; margin-left:.3
 <section class="svc-block" id="events">
   <div class="container svc-grid">
     <div class="svc-media rv">
-      <div class="svc-frame"><img src="photo5.jpg" alt="Party and event hairstyling: soft glamorous waves for sangeet and parties" loading="lazy"></div>
+      <div class="svc-frame"><img src="/images/photo5.jpg" alt="Party and event hairstyling: soft glamorous waves for sangeet and parties" loading="lazy"></div>
     </div>
     <div class="svc-body">
       <p class="svc-no rv">No. 03</p>
@@ -520,7 +551,7 @@ footer a.totop svg{ width:12px; height:12px; vertical-align:-1px; margin-left:.3
 <section class="svc-block" id="destination">
   <div class="container svc-grid rev">
     <div class="svc-media rv">
-      <div class="svc-frame"><img src="photo 9.jpg" alt="Destination wedding hairstylist: long soft waves in natural light" loading="lazy"></div>
+      <div class="svc-frame"><img src="/images/destination wedding img.jpg" alt="Destination wedding hairstylist: long soft waves in natural light" loading="lazy"></div>
     </div>
     <div class="svc-body">
       <p class="svc-no rv">No. 04</p>
@@ -736,7 +767,16 @@ footer a.totop svg{ width:12px; height:12px; vertical-align:-1px; margin-left:.3
     <small class="top"><a class="totop" href="#top" id="toTop">Back to top <i data-lucide="arrow-up"></i></a></small>
   </div>
 </footer>
-
+<a class="wa-float" id="waFloat"
+   href="https://wa.me/919582550707?text=Hi%20Neelam%2C%20I%27d%20like%20to%20enquire%20about%20a%20hair%20booking."
+   target="_blank" rel="noopener" aria-label="Chat with Neelam on WhatsApp">
+  <span class="wa-tip">Chat on WhatsApp</span>
+  <span class="wa-ic">
+    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+      <path d="M16.003 3C8.83 3 3 8.826 3 15.99c0 2.29.6 4.52 1.74 6.49L3 29l6.7-1.72a13 13 0 0 0 6.3 1.6h.003C23.17 28.88 29 23.05 29 15.89 29 12.45 27.66 9.22 25.22 6.8A12.9 12.9 0 0 0 16.003 3Zm0 23.7h-.003a10.8 10.8 0 0 1-5.5-1.5l-.4-.23-3.98 1.02 1.06-3.88-.26-.4a10.7 10.7 0 0 1-1.65-5.7c0-5.95 4.85-10.8 10.82-10.8 2.88 0 5.6 1.12 7.64 3.16a10.7 10.7 0 0 1 3.16 7.64c0 5.96-4.86 10.8-10.88 10.8Zm5.93-8.1c-.33-.16-1.92-.95-2.22-1.06-.3-.1-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.21-.38.24-.7.08-.33-.16-1.37-.5-2.6-1.6-.96-.86-1.6-1.9-1.8-2.22-.18-.32-.02-.5.14-.66.15-.14.33-.38.5-.57.16-.19.2-.33.32-.54.1-.22.05-.4-.03-.57-.08-.16-.73-1.76-1-2.4-.26-.63-.53-.54-.73-.55h-.62c-.22 0-.57.08-.87.4-.3.33-1.14 1.12-1.14 2.72s1.17 3.16 1.33 3.38c.16.22 2.3 3.5 5.57 4.92.78.34 1.38.54 1.86.7.78.25 1.49.21 2.05.13.63-.1 1.92-.78 2.19-1.54.27-.75.27-1.4.19-1.54-.08-.13-.3-.21-.62-.37Z"/>
+    </svg>
+  </span>
+</a>
 <!-- ================= SCHEMA (replace YOURDOMAIN.com) ================= -->
 <script type="application/ld+json">
 {
@@ -898,6 +938,26 @@ footer a.totop svg{ width:12px; height:12px; vertical-align:-1px; margin-left:.3
   });
 
   document.getElementById("yr").textContent = new Date().getFullYear();
+})();
+/* ---------- WhatsApp floating button ---------- */
+(function(){
+  var wa = document.getElementById("waFloat");
+  if(!wa) return;
+  function toggleWa(){ wa.classList.toggle("show", window.scrollY > 300); }
+  window.addEventListener("scroll", toggleWa, { passive:true });
+  toggleWa();
+
+  /* show the label once, 3 seconds after the button first appears */
+  var hinted = false;
+  var obs = setInterval(function(){
+    if(wa.classList.contains("show") && !hinted){
+      hinted = true; clearInterval(obs);
+      setTimeout(function(){
+        wa.classList.add("hint");
+        setTimeout(function(){ wa.classList.remove("hint"); }, 4000);
+      }, 3000);
+    }
+  }, 500);
 })();
 </script>
 </body>

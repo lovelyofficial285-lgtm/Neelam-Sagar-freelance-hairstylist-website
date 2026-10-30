@@ -626,7 +626,46 @@ ol{ list-style:none; }
   display:flex; align-items:center; justify-content:center; transition:all .25s ease;
 }
 .reel-btn:hover{ background:var(--gold); color:var(--ink-2); border-color:var(--gold); transform:scale(1.08); }
-.reel-btn svg{ width:18px; height:18px; }
+.reel-btn svg{ width:18px; height:18px; } /* INSTAGRAM */
+.ig-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:.6rem; margin-top:2.6rem; }
+@media (min-width:1024px){ .ig-grid{ grid-template-columns:repeat(6,1fr); gap:.9rem; } }
+.ig-item{ position:relative; display:block; aspect-ratio:1; overflow:hidden; border-radius:2px; border:1px solid var(--line-t); }
+.ig-item img{ width:100%; height:100%; object-fit:cover; transition:transform .7s var(--ease); }
+.ig-item:hover img{ transform:scale(1.1); }
+.ig-item .ig-ov{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(58,50,46,.45); color:var(--ivory); opacity:0; transition:opacity .35s ease; }
+.ig-item:hover .ig-ov, .ig-item:focus-visible .ig-ov{ opacity:1; }
+.ig-item .ig-ov svg{ width:22px; height:22px; }
+.wa-float{
+  position:fixed; right:max(18px, env(safe-area-inset-right)); bottom:max(18px, env(safe-area-inset-bottom));
+  z-index:850; display:flex; align-items:center; gap:.7rem;
+  opacity:0; visibility:hidden; transform:translateY(20px);
+  transition:opacity .4s ease, transform .4s ease, visibility .4s ease;
+}
+.wa-float.show{ opacity:1; visibility:visible; transform:none; }
+.wa-ic{
+  position:relative; width:58px; height:58px; border-radius:50%;
+  background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center;
+  box-shadow:0 10px 28px rgba(37,211,102,.45);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.wa-ic svg{ width:30px; height:30px; }
+.wa-ic::before{
+  content:""; position:absolute; inset:0; border-radius:50%; background:#25D366; z-index:-1;
+  animation:waPulse 2.4s ease-out infinite;
+}
+@keyframes waPulse{ 0%{ transform:scale(1); opacity:.55; } 100%{ transform:scale(1.7); opacity:0; } }
+.wa-float:hover .wa-ic{ transform:scale(1.08); box-shadow:0 14px 34px rgba(37,211,102,.6); }
+.wa-float:active .wa-ic{ transform:scale(.95); }
+.wa-tip{
+  background:var(--ink-2, #2B2230); color:var(--ivory, #FBF8FC);
+  font-size:.68rem; letter-spacing:.18em; text-transform:uppercase;
+  padding:.65rem 1rem; border-radius:999px; white-space:nowrap;
+  opacity:0; transform:translateX(10px); pointer-events:none;
+  transition:opacity .3s ease, transform .3s ease;
+}
+.wa-float:hover .wa-tip, .wa-float:focus-visible .wa-tip, .wa-float.hint .wa-tip{ opacity:1; transform:none; }
+@media (max-width:640px){ .wa-tip{ display:none; } }
+@media (prefers-reduced-motion:reduce){ .wa-ic::before{ animation:none; } }
 </style>
 </head>
 
@@ -644,13 +683,13 @@ ol{ list-style:none; }
     </a>
 
    <nav class="nav-links" aria-label="Primary navigation">
-  <a href="#home" class="nav-a">Home</a>
+  <a href="/index.html" class="nav-a">Home</a>
   <a href="service.html">Services</a>
-  <a href="/hair-extensions">Hair Extensions</a>
-  <a href="/hairstyle-classes">Classes</a>
-  <a href="/portfolio">Portfolio</a>
-  <a href="#contact" class="nav-a">Contact</a>
-  <a href="#contact" class="nav-cta">Book Now</a>
+  <a href="/gallery.html">Gallery</a>
+  <a href="/contact.html" class="nav-a">Contact</a>
+  <a href="/hairextensions.html">Hair Extensions</a>
+  <a href="/hair-extension-classes.html">Classes</a>
+  <a href="/contact.html" class="nav-cta">Book Now</a>
 </nav>
 
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mMenu">
@@ -664,11 +703,11 @@ ol{ list-style:none; }
  <ul>
   <li><a class="m-link" href="#home">Home</a></li>
   <li><a class="m-link" href="/service.html">Services</a></li>
-  <li><a class="m-link" href="/hair-extensions">Hair Extensions</a></li>
+  <li><a class="m-link" href="/gallery.html">Gallery</a></li>
+  <li><a class="m-link" href="/contact.html">Contact</a></li>
+  <li><a class="m-link" href="/hairextensions.html">Hair Extensions</a></li>
   <li><a class="m-link" href="/hairstyle-classes">Classes</a></li>
-  <li><a class="m-link" href="/portfolio">Portfolio</a></li>
-  <li><a class="m-link" href="#contact">Contact</a></li>
-  <li><a class="m-link m-book" href="#contact">Book Now</a></li>
+  <li><a class="m-link m-book" href="/contact.html">Book Now</a></li>
 </ul>
   <div class="m-extra">
     <a href="https://wa.me/919582550707" target="_blank" rel="noopener" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
@@ -689,8 +728,8 @@ ol{ list-style:none; }
     <p class="hero-tag anim" style="--ad:.36s">Bridal &amp; Editorial Hair Artistry</p>
     <p class="hero-sub anim" style="--ad:.46s">Delhi · Available Worldwide</p>
     <div class="hero-cta anim" style="--ad:.6s">
-      <a class="btn btn-gold" href="#contact">Book Now <i data-lucide="arrow-right"></i></a>
-      <a class="btn btn-line" href="#gallery">View the Work</a>
+      <a class="btn btn-gold" href="/contact.html">Book Now <i data-lucide="arrow-right"></i></a>
+      <a class="btn btn-line" href="/gallery.html">View the Work</a>
     </div>
   </div>
 
@@ -713,7 +752,7 @@ ol{ list-style:none; }
     <div class="about-grid">
       <div class="about-media rv">
         <div class="about-frame">
-          <img src="owner.png" alt="Neelam styling a bride's hair with delicate floral accessories" loading="lazy">
+          <img src="/images/owner.png" alt="Neelam styling a bride's hair with delicate floral accessories" loading="lazy">
         </div>
         <div class="about-chip"><i data-lucide="plane"></i> Delhi base · Worldwide by arrangement</div>
       </div>
@@ -752,28 +791,28 @@ ol{ list-style:none; }
         <div class="svc-top"><span class="svc-ic"><i data-lucide="crown"></i></span><span class="svc-num">No. 01</span></div>
         <h3>Bridal Hair</h3>
         <p>The morning-of ritual, done beautifully — trials, veil setting and styling that holds from the first look to the last dance.</p>
-        <a class="link-arrow" href="#contact">Enquire <i data-lucide="arrow-right"></i></a>
+        <a class="link-arrow" href="/contact.html">Enquire <i data-lucide="arrow-right"></i></a>
       </article>
 
       <article class="svc rv" style="--rd:.15s">
         <div class="svc-top"><span class="svc-ic"><i data-lucide="aperture"></i></span><span class="svc-num">No. 02</span></div>
         <h3>Editorial &amp; Shoots</h3>
         <p>Campaign, cover and couture-week hair — sculpted for the lens, built precisely to the creative brief.</p>
-        <a class="link-arrow" href="#contact">Enquire <i data-lucide="arrow-right"></i></a>
+        <a class="link-arrow" href="/contact.html">Enquire <i data-lucide="arrow-right"></i></a>
       </article>
 
       <article class="svc rv" style="--rd:.25s">
         <div class="svc-top"><span class="svc-ic"><i data-lucide="sparkles"></i></span><span class="svc-num">No. 03</span></div>
         <h3>Party &amp; Event Styling</h3>
         <p>Sangeets, soirées and everything in between — soft, polished glamour that survives the dance floor.</p>
-        <a class="link-arrow" href="#contact">Enquire <i data-lucide="arrow-right"></i></a>
+        <a class="link-arrow" href="/contact.html">Enquire <i data-lucide="arrow-right"></i></a>
       </article>
 
       <article class="svc rv" style="--rd:.35s">
         <div class="svc-top"><span class="svc-ic"><i data-lucide="plane"></i></span><span class="svc-num">No. 04</span></div>
         <h3>Destination Bookings</h3>
         <p>Fully flight-ready with a kit that travels light — Udaipur to Lake Como, Neelam comes to you.</p>
-        <a class="link-arrow" href="#contact">Enquire <i data-lucide="arrow-right"></i></a>
+        <a class="link-arrow" href="/contact.html">Enquire <i data-lucide="arrow-right"></i></a>
       </article>
     </div>
   </div>
@@ -782,7 +821,7 @@ ol{ list-style:none; }
   <div class="container split">
     <div class="split-media rv">
       <div class="split-frame">
-        <img src="photo 9.jpg" alt="Hair extensions by Neelam Sagar in Delhi and Mumbai" loading="lazy">
+        <img src="/images/photo 9.jpg" alt="Hair extensions by Neelam Sagar in Delhi and Mumbai" loading="lazy">
       </div>
     </div>
     <div>
@@ -790,7 +829,7 @@ ol{ list-style:none; }
       <h2 class="h-display rv" style="--rd:.08s">Hair extensions in <em>Delhi &amp; Mumbai.</em></h2>
       <p class="lead rv" style="--rd:.16s; margin-top:1.6rem;">Natural-looking length and volume for brides, shoots and special days, fitted and styled by Neelam herself.</p>
       <div class="about-chips rv" style="--rd:.24s">
-        <span>Clip-in</span><span>Bridal volume</span><span>Natural &amp; fake hair</span><span>Care guidance</span>
+        <span>Clip-in</span><span>Bridal volume</span><span>Natural &amp; Synthetic Hair Extensions</span><span>Care guidance</span>
       </div>
       <a class="btn btn-gold rv" style="--rd:.3s" href="/hair-extensions">See Extensions <i data-lucide="arrow-right"></i></a>
     </div>
@@ -801,7 +840,7 @@ ol{ list-style:none; }
   <div class="container split rev">
     <div class="split-media rv">
       <div class="split-frame">
-        <img src="neelam with sakshi malik standing.jpeg" alt="Hairstyle classes with Neelam Sagar" loading="lazy">
+        <img src="/images/neelam with sakshi malik standing.jpeg" alt="Hairstyle classes with Neelam Sagar" loading="lazy">
       </div>
     </div>
     <div>
@@ -825,37 +864,37 @@ ol{ list-style:none; }
 
     <div class="masonry" id="gGrid">
       <button class="g-item rv" data-cap="Pearl-Set Bridal Updo" data-full="https://images.pexels.com/photos/31255042/pexels-photo-31255042.jpeg?auto=compress&cs=tinysrgb&w=1500" aria-label="Open image: Pearl-Set Bridal Updo">
-        <img src="photo main.jpg" alt="Overhead view of a bridal updo set with pearls" loading="lazy">
+        <img src="/images/photo main.jpg" alt="Overhead view of a bridal updo set with pearls" loading="lazy">
         <span class="g-veil"></span><span class="g-plus"><i data-lucide="plus"></i></span><span class="g-cap">Pearl-Set Bridal Updo</span>
       </button>
 
       <button class="g-item rv" style="--rd:.08s" data-cap="The Braided Trail" data-full="https://images.pexels.com/photos/13212603/pexels-photo-13212603.jpeg?auto=compress&cs=tinysrgb&w=1500" aria-label="Open image: The Braided Trail">
-        <img src="sakshi malik.jpeg" alt="Intricate braid being woven into long hair" loading="lazy">
+        <img src="/images/sakshi malik.jpeg" alt="Intricate braid being woven into long hair" loading="lazy">
         <span class="g-veil"></span><span class="g-plus"><i data-lucide="plus"></i></span><span class="g-cap">The Braided Trail</span>
       </button>
 
       <button class="g-item rv" style="--rd:.16s" data-cap="Jewelled Knot" data-full="https://images.pexels.com/photos/20874817/pexels-photo-20874817.jpeg?auto=compress&cs=tinysrgb&w=1500" aria-label="Open image: Jewelled Knot">
-        <img src="bridal makeup.jpg" alt="Bridal updo with a jewelled hairpiece, backless dress" loading="lazy">
+        <img src="/images/bridal makeup.jpg" alt="Bridal updo with a jewelled hairpiece, backless dress" loading="lazy">
         <span class="g-veil"></span><span class="g-plus"><i data-lucide="plus"></i></span><span class="g-cap">Jewelled Knot</span>
       </button>
 
       <button class="g-item rv" style="--rd:.1s" data-cap="Morning-Of, In Progress" data-full="https://images.pexels.com/photos/36553505/pexels-photo-36553505.jpeg?auto=compress&cs=tinysrgb&w=1500" aria-label="Open image: Morning-Of, In Progress">
-        <img src="photo4.jpg" alt="Bride getting ready with her hairstylist on the wedding morning" loading="lazy">
+        <img src="/images/photo4.jpg" alt="Bride getting ready with her hairstylist on the wedding morning" loading="lazy">
         <span class="g-veil"></span><span class="g-plus"><i data-lucide="plus"></i></span><span class="g-cap">Morning-Of, In Progress</span>
       </button>
 
       <button class="g-item rv" style="--rd:.18s" data-cap="Feathered Fantasy" data-full="https://images.pexels.com/photos/9784229/pexels-photo-9784229.jpeg?auto=compress&cs=tinysrgb&w=1500" aria-label="Open image: Feathered Fantasy">
-        <img src="photo5.jpg" alt="Editorial updo adorned with soft feathers" loading="lazy">
+        <img src="/images/photo5.jpg" alt="Editorial updo adorned with soft feathers" loading="lazy">
         <span class="g-veil"></span><span class="g-plus"><i data-lucide="plus"></i></span><span class="g-cap">Feathered Fantasy</span>
       </button>
 
       <button class="g-item rv" style="--rd:.26s" data-cap="Set Waves" data-full="https://images.pexels.com/photos/30005366/pexels-photo-30005366.jpeg?auto=compress&cs=tinysrgb&w=1500" aria-label="Open image: Set Waves">
-        <img src="photo2.jpg" alt="Curling iron setting waves for a bridal style with hairpiece" loading="lazy">
+        <img src="/images/photo2.jpg" alt="Curling iron setting waves for a bridal style with hairpiece" loading="lazy">
         <span class="g-veil"></span><span class="g-plus"><i data-lucide="plus"></i></span><span class="g-cap">Set Waves</span>
       </button>
 
       <button class="g-item rv" style="--rd:.14s" data-cap="Sunlit Lengths" data-full="https://images.pexels.com/photos/13788286/pexels-photo-13788286.jpeg?auto=compress&cs=tinysrgb&w=1500" aria-label="Open image: Sunlit Lengths">
-        <img src="photo 9.jpg" alt="Long soft waves from behind, flowing in natural light" loading="lazy">
+        <img src="/images/photo 9.jpg" alt="Long soft waves from behind, flowing in natural light" loading="lazy">
         <span class="g-veil"></span><span class="g-plus"><i data-lucide="plus"></i></span><span class="g-cap">Sunlit Lengths</span>
       </button>
 
@@ -874,21 +913,21 @@ ol{ list-style:none; }
 
     <div class="reels">
       <figure class="reel rv" style="--rd:.08s">
-        <video src="editorial look sakshi malik.mp4" poster="videos/editorial-1.jpg"
+        <video src="videos/editorial look sakshi malik - Trim.mp4" poster="videos/editorial-1.jpg"
                muted loop playsinline preload="none"
                aria-label="Editorial hairstyle video by Neelam Sagar"></video>
         <button class="reel-btn" aria-label="Unmute video"><i data-lucide="volume-x"></i></button>
         <figcaption>Editorial look</figcaption>
       </figure>
       <figure class="reel rv" style="--rd:.16s">
-        <video src="editorial video 2.mp4" poster="videos/extensions-1.jpg"
+        <video src="/videos/editorial video 2.mp4" poster="videos/extensions-1.jpg"
                muted loop playsinline preload="none"
                aria-label="Hair extensions video by Neelam Sagar"></video>
         <button class="reel-btn" aria-label="Unmute video"><i data-lucide="volume-x"></i></button>
         <figcaption>Hair extensions</figcaption>
       </figure>
       <figure class="reel rv">
-        <video src="bridal video.mp4" poster="videos/bridal-1.jpg"
+        <video src="/videos/bridal video.mp4" poster="videos/bridal-1.jpg"
                muted loop playsinline preload="none"
                aria-label="Bridal hairstyle video by Neelam Sagar"></video>
         <button class="reel-btn" aria-label="Unmute video"><i data-lucide="volume-x"></i></button>
@@ -974,7 +1013,7 @@ ol{ list-style:none; }
 
     <div class="t-dots" id="tDots" role="tablist" aria-label="Choose testimonial"></div>
   </div>
-</section>
+</section>  
 <section class="section services" id="faq">
   <div class="container">
     <div class="section-head" style="text-align:center; max-width:640px; margin-inline:auto;">
@@ -1136,6 +1175,16 @@ ol{ list-style:none; }
     <button class="lb-btn lb-next" id="lbNext" aria-label="Next image"><i data-lucide="chevron-right"></i></button>
   </div>
 </div>
+<a class="wa-float" id="waFloat"
+   href="https://wa.me/919582550707?text=Hi%20Neelam%2C%20I%27d%20like%20to%20enquire%20about%20a%20hair%20booking."
+   target="_blank" rel="noopener" aria-label="Chat with Neelam on WhatsApp">
+  <span class="wa-tip">Chat on WhatsApp</span>
+  <span class="wa-ic">
+    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+      <path d="M16.003 3C8.83 3 3 8.826 3 15.99c0 2.29.6 4.52 1.74 6.49L3 29l6.7-1.72a13 13 0 0 0 6.3 1.6h.003C23.17 28.88 29 23.05 29 15.89 29 12.45 27.66 9.22 25.22 6.8A12.9 12.9 0 0 0 16.003 3Zm0 23.7h-.003a10.8 10.8 0 0 1-5.5-1.5l-.4-.23-3.98 1.02 1.06-3.88-.26-.4a10.7 10.7 0 0 1-1.65-5.7c0-5.95 4.85-10.8 10.82-10.8 2.88 0 5.6 1.12 7.64 3.16a10.7 10.7 0 0 1 3.16 7.64c0 5.96-4.86 10.8-10.88 10.8Zm5.93-8.1c-.33-.16-1.92-.95-2.22-1.06-.3-.1-.52-.16-.73.17-.22.32-.84 1.05-1.03 1.27-.19.21-.38.24-.7.08-.33-.16-1.37-.5-2.6-1.6-.96-.86-1.6-1.9-1.8-2.22-.18-.32-.02-.5.14-.66.15-.14.33-.38.5-.57.16-.19.2-.33.32-.54.1-.22.05-.4-.03-.57-.08-.16-.73-1.76-1-2.4-.26-.63-.53-.54-.73-.55h-.62c-.22 0-.57.08-.87.4-.3.33-1.14 1.12-1.14 2.72s1.17 3.16 1.33 3.38c.16.22 2.3 3.5 5.57 4.92.78.34 1.38.54 1.86.7.78.25 1.49.21 2.05.13.63-.1 1.92-.78 2.19-1.54.27-.75.27-1.4.19-1.54-.08-.13-.3-.21-.62-.37Z"/>
+    </svg>
+  </span>
+</a>
 
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script>
@@ -1378,5 +1427,27 @@ reels.forEach(function(r){
   document.getElementById("yr").textContent = new Date().getFullYear();
 })();
 </script><script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<script>
+/* ---------- WhatsApp floating button ---------- */
+(function(){
+  var wa = document.getElementById("waFloat");
+  if(!wa) return;
+  function toggleWa(){ wa.classList.toggle("show", window.scrollY > 300); }
+  window.addEventListener("scroll", toggleWa, { passive:true });
+  toggleWa();
+
+  /* show the label once, 3 seconds after the button first appears */
+  var hinted = false;
+  var obs = setInterval(function(){
+    if(wa.classList.contains("show") && !hinted){
+      hinted = true; clearInterval(obs);
+      setTimeout(function(){
+        wa.classList.add("hint");
+        setTimeout(function(){ wa.classList.remove("hint"); }, 4000);
+      }, 3000);
+    }
+  }, 500);
+})();
+</script>
 </body>
 </html>
