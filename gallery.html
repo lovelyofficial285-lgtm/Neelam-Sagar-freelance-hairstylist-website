@@ -94,6 +94,7 @@ body.menu-open .burger-box span:nth-child(1){ top:7px; transform:rotate(45deg); 
 body.menu-open .burger-box span:nth-child(2){ opacity:0; }
 body.menu-open .burger-box span:nth-child(3){ top:7px; transform:rotate(-45deg); }
 body.menu-open .site-nav{ --nc:var(--ivory); background:transparent; border-color:transparent; box-shadow:none; }
+body.menu-open .site-nav{ z-index:960; }
 @media (min-width:1100px){ .nav-links{ display:flex; } .burger{ display:none; } }
 @media (max-width:1279px){ .brand-t .s{ display:none; } }
 .m-menu{ position:fixed; inset:0; z-index:950; background:var(--ink-2); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2.2rem; opacity:0; visibility:hidden; transition:opacity .38s ease, visibility .38s ease; }
@@ -236,12 +237,12 @@ footer a.totop svg{ width:12px; height:12px; vertical-align:-1px; margin-left:.3
     </a>
     <nav class="nav-links" aria-label="Primary navigation">
       <a href="/">Home</a>
-      <a href="/services">Services</a>  <a href="/gallery.html">Gallery</a>
-      <a href="/contact">Contact</a> 
-      <a href="/hair-extensions">Hair Extensions</a>
-      <a href="/hairstyle-classes">Classes</a>
+      <a href="/services.html">Services</a>  <a href="/gallery.html">Gallery</a>
+      <a href="/contact.html">Contact</a> 
+      <a href="/hairextensions.html">Hair Extensions</a>
+      <a href="/hairstyling-classes-delhi.html">Classes</a>
      
-      <a href="/contact" class="nav-cta">Book Now</a>
+      <a href="/contact.html" class="nav-cta">Book Now</a>
     </nav>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mMenu">
       <span class="burger-box"><span></span><span></span><span></span></span>
@@ -252,12 +253,12 @@ footer a.totop svg{ width:12px; height:12px; vertical-align:-1px; margin-left:.3
 <div class="m-menu" id="mMenu" aria-hidden="true">
   <ul>
     <li><a class="m-link" href="/">Home</a></li>
-    <li><a class="m-link" href="/services">Services</a></li>
-    <li><a class="m-link" href="/hair-extensions">Hair Extensions</a></li>
-    <li><a class="m-link" href="/hairstyle-classes">Classes</a></li>
-    <li><a class="m-link" href="/portfolio" aria-current="page">Portfolio</a></li>
-    <li><a class="m-link" href="/contact">Contact</a></li>
-    <li><a class="m-link m-book" href="/contact">Book Now</a></li>
+    <li><a class="m-link" href="/services.html">Services</a></li>
+    <li><a class="m-link" href="/hairextensions.html">Hair Extensions</a></li>
+    <li><a class="m-link" href="/hairstyling-classes-delhi.html">Classes</a></li>
+    <!-- <li><a class="m-link" href="/portfolio" aria-current="page">Portfolio</a></li> -->
+    <li><a class="m-link" href="/contact.html">Contact</a></li>
+    <li><a class="m-link m-book" href="/contact.html">Book Now</a></li>
   </ul>
   <div class="m-extra">
     <a href="https://wa.me/919582550707" target="_blank" rel="noopener" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
@@ -298,20 +299,20 @@ footer a.totop svg{ width:12px; height:12px; vertical-align:-1px; margin-left:.3
     <!-- Each item: data-cat = bridal | editorial | events | destination | extensions
          Rename files, edit alt text and data-cap for every image. Add or remove items freely. -->
     <div class="masonry" id="gGrid">
-      <button class="g-item" data-cat="bridal" data-cap="Bridal updo with pearls" aria-label="Open image: Bridal updo with pearls"><img src="/images/gallery bridal.jpg" alt="Bridal updo with pearls by Neelam Sagar, bridal hairstylist in Delhi" loading="lazy"><span class="g-veil"></span><span class="g-cap">Bridal updo with pearls</span></button>
+      <button class="g-item" data-cat="bridal" data-cap="Bridal updo with pearls" aria-label="Open image: Bridal updo with pearls"><img src="/images/bridal-detailed-makeup.webp" alt="Bridal updo with pearls by Neelam Sagar, bridal hairstylist in Delhi" loading="lazy"><span class="g-veil"></span><span class="g-cap">Bridal updo with pearls</span></button>
         
-      <button class="g-item" data-cat="editorial" data-cap="Editorial sculpted look" aria-label="Open image: Editorial sculpted look"><img src="/images/gallery img.jpg" alt="Editorial sculpted hairstyle by celebrity hairstylist Neelam Sagar" loading="lazy"><span class="g-veil"></span><span class="g-cap">Editorial sculpted look</span></button>
+      <button class="g-item" data-cat="editorial" data-cap="Editorial sculpted look" aria-label="Open image: Editorial sculpted look"><img src="/images/editorial bridal makeup .webp" alt="Editorial sculpted hairstyle by celebrity hairstylist Neelam Sagar" loading="lazy"><span class="g-veil"></span><span class="g-cap">Editorial sculpted look</span></button>
      
-      <button class="g-item" data-cat="events" data-cap="Soft party waves" aria-label="Open image: Soft party waves"><img src="/images/photo main.jpg" alt="Soft party waves hairstyle for sangeet by Neelam Sagar" loading="lazy"><span class="g-veil"></span><span class="g-cap">Soft party waves</span></button>
+      <button class="g-item" data-cat="events" data-cap="Soft party waves" aria-label="Open image: Soft party waves"><img src="/images/editorial-makeup.webp" alt="Soft party waves hairstyle for sangeet by Neelam Sagar" loading="lazy"><span class="g-veil"></span><span class="g-cap">Soft party waves</span></button>
       
-      <button class="g-item" data-cat="bridal" data-cap="Bridal bun with veil" aria-label="Open image: Bridal bun with veil"><img src="/images/photot1.jpg" alt="Bridal bun with veil by Neelam Sagar in Mumbai" loading="lazy"><span class="g-veil"></span><span class="g-cap">Bridal bun with veil</span></button>
+      <button class="g-item" data-cat="bridal" data-cap="Party glam hair" aria-label="Open image: Party glam hairstyle"><img src="/images/party-hairstyle.webp" alt="Party glam hairstyle" loading="lazy"><span class="g-veil"></span><span class="g-cap">Party glam hairstyle</span></button>
       
-      <button class="g-item" data-cat="destination" data-cap="Destination wedding hair" aria-label="Open image: Destination wedding hair"><img src="/images/bridal makeup service page.jpg" alt="Destination wedding hairstyle by Neelam Sagar" loading="lazy"><span class="g-veil"></span><span class="g-cap">Destination wedding hair</span></button>
+      <button class="g-item" data-cat="destination" data-cap="Destination wedding hair" aria-label="Open image: Destination wedding hair"><img src="/images/destinational-bridal.jpg" alt="Destination wedding hairstyle by Neelam Sagar" loading="lazy"><span class="g-veil"></span><span class="g-cap">Destination wedding hair</span></button>
       
-      <button class="g-item" data-cat="extensions" data-cap="Extensions for volume" aria-label="Open image: Extensions for volume"><img src="/images/photo8.jpg" alt="Hair extensions styled for added volume by Neelam Sagar" loading="lazy"><span class="g-veil"></span><span class="g-cap">Extensions for volume</span></button>
+      <button class="g-item" data-cat="extensions" data-cap="Extensions for volume" aria-label="Open image: Extensions for volume"><img src="/images/photo 6.webp" alt="Hair extensions styled for added volume by Neelam Sagar" loading="lazy"><span class="g-veil"></span><span class="g-cap">Extensions for volume</span></button>
       
       
-      <button class="g-item" data-cat="bridal" data-cap="Floral bridal braid" aria-label="Open image: Floral bridal braid"><img src="/images/bridal.jpg" alt="Floral bridal braid by Neelam Sagar" loading="lazy"><span class="g-veil"></span><span class="g-cap">Floral bridal braid</span></button>
+      <button class="g-item" data-cat="bridal" data-cap="Floral bridal braid" aria-label="Open image: Floral bridal braid"><img src="/images/sakshi malik.webp" alt="Floral bridal braid by Neelam Sagar" loading="lazy"><span class="g-veil"></span><span class="g-cap">Celebrity ad hairstyle</span></button>
       
        
     </div>
@@ -334,7 +335,7 @@ footer a.totop svg{ width:12px; height:12px; vertical-align:-1px; margin-left:.3
       <figure class="reel rv">
         <video src="videos/gallery video 1 - Trim.mp4" poster="videos/portfolio-2.jpg" muted loop playsinline preload="none" aria-label="Editorial hairstyle video by Neelam Sagar"></video>
         <button class="reel-btn" aria-label="Unmute video"><i data-lucide="volume-x"></i></button>
-        <figcaption>Editorial look</figcaption>
+        <figcaption>International Bride</figcaption>
       </figure>
       <figure class="reel rv">
         <video src="videos/editorial look sakshi malik - Trim.mp4" poster="videos/portfolio-3.jpg" muted loop playsinline preload="none" aria-label="Party hairstyle video by Neelam Sagar"></video>
@@ -369,7 +370,11 @@ footer a.totop svg{ width:12px; height:12px; vertical-align:-1px; margin-left:.3
       <span class="f-txt"><span class="n">Hair by Neelam Sagar</span><span class="s">Delhi · Mumbai · Available Worldwide</span></span>
     </a>
     <nav class="f-links" aria-label="Footer navigation">
-      <a href="/">Home</a><a href="/services">Services</a><a href="/hair-extensions">Hair Extensions</a><a href="/hairstyle-classes">Classes</a><a href="/portfolio">Portfolio</a><a href="/contact">Contact</a>
+      <a href="/">Home</a><a href="/services.html">Services</a>
+      <a href="/hairextensions.html">Hair Extensions</a>
+      <a href="/hairstyling-classes-delhi.html">Classes</a>
+      <!-- <a href="/portfolio">Portfolio</a> -->
+      <a href="/contact.html">Contact</a>
     </nav>
     <div class="f-soc">
       <a href="https://www.instagram.com/hairbyneelamsagar" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
